@@ -1,0 +1,36 @@
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class HighLightWebelement {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		WebDriver driver = new FirefoxDriver();
+		driver.manage().window().maximize();
+		driver.get("http://demo.actitime.com/login.do");
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+
+		WebElement loginButton = driver.findElement(By.id("loginButton"));
+
+		HighLightWebelement.HighLight(loginButton, driver);
+		Set<String> hande = driver.getWindowHandles();
+
+	}
+
+	public static void HighLight(WebElement element, WebDriver driver) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		for (int i = 0; i <= 2; i++) {
+
+			js.executeScript(
+					"arguments[0].setAttribute('style', arguments[1]);",
+					element, "color: red; border: 3px groove red;");
+		}
+
+	}
+}

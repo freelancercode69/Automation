@@ -1,0 +1,28 @@
+public class FindColor {
+
+  public static void main(String[] args) {
+    // TODO Auto-generated method stub
+    WebDriver driver = new FirefoxDriver();
+    driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+    driver.manage().window().maximize();
+    driver.get("https://mail.google.com");
+    WebElement next = driver.findElement(By.id("next"));
+    String rgbColor = next.getCssValue("color");
+    // print rgbColor of Next
+    System.out.println(rgbColor);
+    // convert RGB to HexaValue
+    Color color = Color.fromString(rgbColor);
+    String colorCode = color.asHex();
+    // print Hexa Color of Next
+    System.out.println(colorCode);
+
+    // Print the font-size
+    String fontSize = next.getCssValue("font-size");
+    System.out.println(fontSize);
+    if(colorCode.equals("#ffffff")){
+      System.out.println("color successfully  verified");
+    }
+    driver.quit();
+  }
+
+}

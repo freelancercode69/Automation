@@ -1,0 +1,5 @@
+      WebDriver driver=new FirefoxDriver();
+			driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+			driver.manage().window().maximize();
+			driver.get("http://demo.actitime.com");
+			((JavascriptExecutor) driver).executeScript("document.getElementsByName('username')[0].value='admin'");
